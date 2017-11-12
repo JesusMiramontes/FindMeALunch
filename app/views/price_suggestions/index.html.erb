@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Price Suggestions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Product</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @price_suggestions.each do |price_suggestion| %>
+      <tr>
+        <td><%= price_suggestion.user.email %></td>
+        <td><%= price_suggestion.product.title %></td>
+        <td><%= price_suggestion.price %></td>
+        <td><%= link_to 'Show', price_suggestion %></td>
+        <td><%= link_to 'Edit', edit_price_suggestion_path(price_suggestion) %></td>
+        <td><%= link_to 'Destroy', price_suggestion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Price Suggestion', new_price_suggestion_path %>
