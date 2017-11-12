@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @tag_suggestion.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tag_suggestion.user.email %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @tag_suggestion.product.title %>
+</p>
+
+<%= link_to 'Edit', edit_tag_suggestion_path(@tag_suggestion) %> |
+<%= link_to 'Back', tag_suggestions_path %>

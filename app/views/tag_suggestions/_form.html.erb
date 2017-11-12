@@ -1,0 +1,32 @@
+<%= form_for(tag_suggestion) do |f| %>
+  <% if tag_suggestion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tag_suggestion.errors.count, "error") %> prohibited this tag_suggestion from being saved:</h2>
+
+      <ul>
+      <% tag_suggestion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :product_id %>
+    <%= f.text_field :product_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

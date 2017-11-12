@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112050733) do
+ActiveRecord::Schema.define(version: 20171112051247) do
 
   create_table "price_suggestions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20171112050733) do
     t.float    "price",       limit: 24
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "tag_suggestions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_tag_suggestions_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_tag_suggestions_on_user_id", using: :btree
   end
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -58,5 +68,7 @@ ActiveRecord::Schema.define(version: 20171112050733) do
 
   add_foreign_key "price_suggestions", "products"
   add_foreign_key "price_suggestions", "users"
+  add_foreign_key "tag_suggestions", "products"
+  add_foreign_key "tag_suggestions", "users"
   add_foreign_key "tags", "products"
 end

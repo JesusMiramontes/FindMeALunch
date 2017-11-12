@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tag_suggestions
   resources :tags
   resources :price_suggestions
   resources :products

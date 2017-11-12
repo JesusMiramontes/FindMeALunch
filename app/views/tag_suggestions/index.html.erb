@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tag Suggestions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>User</th>
+      <th>Product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tag_suggestions.each do |tag_suggestion| %>
+      <tr>
+        <td><%= tag_suggestion.title %></td>
+        <td><%= tag_suggestion.user.email %></td>
+        <td><%= tag_suggestion.product.title %></td>
+        <td><%= link_to 'Show', tag_suggestion %></td>
+        <td><%= link_to 'Edit', edit_tag_suggestion_path(tag_suggestion) %></td>
+        <td><%= link_to 'Destroy', tag_suggestion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tag Suggestion', new_tag_suggestion_path %>
