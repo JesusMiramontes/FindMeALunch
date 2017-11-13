@@ -23,3 +23,6 @@
 GemFile
 GemFile.lock
 Gemfile.lock
+config/database.yml
+Gemfile
+Gemfile.lock
