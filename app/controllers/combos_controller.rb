@@ -15,6 +15,7 @@ class CombosController < ApplicationController
   # GET /combos/new
   def new
     @combo = Combo.new
+    @products = Product.all
   end
 
   # GET /combos/1/edit
@@ -25,7 +26,8 @@ class CombosController < ApplicationController
   # POST /combos.json
   def create
     @combo = Combo.new(combo_params)
-
+    @combo.products = params[:products]
+    
     respond_to do |format|
       if @combo.save
         format.html { redirect_to @combo, notice: 'Combo was successfully created.' }
@@ -69,6 +71,6 @@ class CombosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def combo_params
-      params.require(:combo).permit(:title, :description)
+      params.require(:combo).permit(:title, :description, :products)
     end
 end

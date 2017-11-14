@@ -20,6 +20,15 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
+  
+  <div>
+    <label>Products</label>
+    <% @products.each do |product| %>
+      <div class="field">
+        <%= check_box_tag "products[]", product.id %> <%= product.title %>
+      </div>  
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
