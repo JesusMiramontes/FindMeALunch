@@ -1,9 +1,9 @@
 class PriceSuggestionsController < ApplicationController
+  include UserConcern
   before_action :set_price_suggestion, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :is_admin?, except: [:new]
+  before_action :only_admins, except: [:new]
   
-
   # GET /price_suggestions
   # GET /price_suggestions.json
   def index
@@ -73,11 +73,5 @@ class PriceSuggestionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_suggestion_params
       params.require(:price_suggestion).permit(:user_id, :product_id, :price)
-    end
-    
-    def is_admin?
-      if Integer(current_user.access_lvl) < 2
-        redirect_to new_price_suggestion_path
-      end
     end
 end

@@ -8,6 +8,6 @@ module UserConcern
     end
     
     def is_admin?
-        Integer(current_user.access_lvl) < 2
+        Integer(current_user.access_lvl) <= 2
     end
 end

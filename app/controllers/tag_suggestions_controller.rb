@@ -1,5 +1,9 @@
 class TagSuggestionsController < ApplicationController
+  include UserConcern
+  before_action :authenticate_user!
   before_action :set_tag_suggestion, only: [:show, :edit, :update, :destroy]
+  before_action :only_admins, except: [:new]
+  
 
   # GET /tag_suggestions
   # GET /tag_suggestions.json
