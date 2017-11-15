@@ -10,5 +10,26 @@
   <%= @combo.description %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @combo.products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_combo_path(@combo) %> |
 <%= link_to 'Back', combos_path %>

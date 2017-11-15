@@ -1,4 +1,6 @@
 class Combo < ApplicationRecord
+    has_many :has_products
+    has_many :products, through: :has_products
     after_create :save_products
     
     def products=(value)

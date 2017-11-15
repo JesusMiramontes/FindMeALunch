@@ -20,6 +20,8 @@ class CombosController < ApplicationController
 
   # GET /combos/1/edit
   def edit
+    @products = @combo.products.all
+    @combo.products = params[:products]
   end
 
   # POST /combos
@@ -42,6 +44,8 @@ class CombosController < ApplicationController
   # PATCH/PUT /combos/1
   # PATCH/PUT /combos/1.json
   def update
+    @combo.products = params[:products]
+   #@combo.products.destroy
     respond_to do |format|
       if @combo.update(combo_params)
         format.html { redirect_to @combo, notice: 'Combo was successfully updated.' }
