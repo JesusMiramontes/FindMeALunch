@@ -1,5 +1,8 @@
 class CombosController < ApplicationController
+  include UserConcern
   before_action :set_combo, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :only_admins, except: [:show, :index]
 
   # GET /combos
   # GET /combos.json

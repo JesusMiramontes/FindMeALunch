@@ -31,5 +31,10 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_combo_path(@combo) %> |
+<% if user_signed_in? %>
+  <% if current_user.is_admin? %>
+    <%= link_to 'Edit', edit_combo_path(@combo) %> |
+  <% end %>
+<% end %>
+
 <%= link_to 'Back', combos_path %>
