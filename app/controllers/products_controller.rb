@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
+  include UserConcern
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index] 
-  
+  before_action :only_admins, except: [:show, :index, :new]
   # GET /products
   # GET /products.json
   def index
