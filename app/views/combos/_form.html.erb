@@ -20,14 +20,26 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
-  
+
   <div>
+    
+    <!-- Muestra los productos que ya existen en el combo -->
     <label>Products</label>
     <% @products.each do |product| %>
       <div class="field">
-        <%= check_box_tag "products[]", product.id %> <%= product.title %>
+        <%= check_box_tag 'products[]', product.id, true %> <%= product.title %>
       </div>  
     <% end %>
+    
+    <!-- Muestra los productos que NO existen en el combo -->
+    <% @all_products.each do |p| %>
+      <% unless (Combo.exists p.id, @products) %>
+        <div class="field">
+          <%= check_box_tag 'products[]', p.id, false %> <%= p.title %>
+        </div> 
+      <% end %>
+    <% end %>
+    
   </div>
 
   <div class="actions">

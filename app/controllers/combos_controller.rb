@@ -21,7 +21,7 @@ class CombosController < ApplicationController
   # GET /combos/1/edit
   def edit
     @products = @combo.products.all
-    @combo.products = params[:products]
+    @all_products = Product.all
   end
 
   # POST /combos
@@ -44,8 +44,12 @@ class CombosController < ApplicationController
   # PATCH/PUT /combos/1
   # PATCH/PUT /combos/1.json
   def update
+    # Elimina todos los registos de 'productos' en el combo actual
+    @combo.products.destroy_all
+    
+    # Crea nuevos registros con los nuevos productos seleccionados
     @combo.products = params[:products]
-   #@combo.products.destroy
+    
     respond_to do |format|
       if @combo.update(combo_params)
         format.html { redirect_to @combo, notice: 'Combo was successfully updated.' }
