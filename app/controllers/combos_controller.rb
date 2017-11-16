@@ -15,7 +15,8 @@ class CombosController < ApplicationController
   # GET /combos/new
   def new
     @combo = Combo.new
-    @products = Product.all
+    @all_products = Product.all
+    @products = Array.new
   end
 
   # GET /combos/1/edit
