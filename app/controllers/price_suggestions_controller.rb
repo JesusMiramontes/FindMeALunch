@@ -28,6 +28,7 @@ class PriceSuggestionsController < ApplicationController
   # POST /price_suggestions.json
   def create
     @price_suggestion = PriceSuggestion.new(price_suggestion_params)
+    @price_suggestion.user_id = current_user.id
 
     respond_to do |format|
       if @price_suggestion.save
@@ -72,6 +73,6 @@ class PriceSuggestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_suggestion_params
-      params.require(:price_suggestion).permit(:user_id, :product_id, :price)
+      params.require(:price_suggestion).permit(:product_id, :price)
     end
 end
