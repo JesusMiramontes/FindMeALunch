@@ -29,6 +29,7 @@ class TagSuggestionsController < ApplicationController
   # POST /tag_suggestions.json
   def create
     @tag_suggestion = TagSuggestion.new(tag_suggestion_params)
+    @tag_suggestion.user_id = current_user.id
 
     respond_to do |format|
       if @tag_suggestion.save
@@ -73,6 +74,6 @@ class TagSuggestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_suggestion_params
-      params.require(:tag_suggestion).permit(:title, :user_id, :product_id)
+      params.require(:tag_suggestion).permit(:title, :product_id)
     end
 end
