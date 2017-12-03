@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProyectoIngSoft</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+      <title>Almuerzos Recomendados - AlmuerzaTec</title>
+      <link rel="stylesheet" type="text/css" href="index_style.css">
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+      <link rel="stylesheet" href="font-awesome-4.7.0\css\font-awesome.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
+  <%= render "partials/nav"%>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"" id="main_header">
+    
     <!-- Devise flash messages -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <%= render "partials/foot"%>  
+    </div>
+    
   </body>
 </html>
