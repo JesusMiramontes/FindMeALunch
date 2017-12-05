@@ -18,17 +18,3 @@
 
 /.idea/*
 .idea/
-
-<<<<<<< HEAD
-ProyectoIngSoft_development
-ProyectoIngSoft_test
-=======
-/config/database.yml
-GemFile
-GemFile.lock
-Gemfile.lock
-config/database.yml
-Gemfile
-Gemfile.lock
-db/schema.rb
->>>>>>> Enrique

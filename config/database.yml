@@ -13,13 +13,6 @@ default: &default
   adapter: sqlite3
   encoding: utf8
   pool: 5
-<<<<<<< HEAD
-  username: root
-  password: root
-  host: localhost
-  port: 3306
-=======
->>>>>>> Enrique
 
 development:
   <<: *default
