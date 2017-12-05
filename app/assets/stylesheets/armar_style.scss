@@ -1,0 +1,127 @@
+html,body{
+ overflow:auto;
+}
+
+body{
+ margin:0;
+ width:100%;
+ height:100%;
+ position:fixed;
+ top:0;
+ left:0;
+}
+.clear{clear:both;}
+
+#wrapper{
+ 	overflow:hidden;
+ 	min-height:100%;
+}
+
+#usr-btn{
+	float: right;
+	list-style:none;
+  	margin:10px;
+}
+
+.wrapper {
+        display: flex;
+}
+
+#sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        height: 100vh;
+}
+
+#sidebarleft,#sidebarright{
+	background-color: #273e47;
+	width: 250px;
+	max-width: 25%;
+	margin-bottom: -10000px;
+ 	padding-bottom: 10000px;
+ 	min-height:100%;
+}
+
+#main-navbar{
+	color: #bd632f;
+	height: auto;
+	float: top;
+}
+
+.p{
+	font-family: "Helvetica World";
+}
+
+#sidebarleft{
+ float:left;
+}
+#sidebarright{
+ float:right;
+}
+
+
+@media screen and (max-width: 768px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    background:#ecf0f1;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -40%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 40%;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 40%;
+    margin-left: 12px;
+  }
+}
+
+#wrapper{
+  padding-left: 250px;
+  margin-left: 15px;
+  transition: all 0.4s ease 0s;
+}
+
+.left-sidebar {
+  min-height: 100%;
+  height: 100%;
+  position: fixed;
+  margin-left: -250px;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+.left-sidebar.affix-top{
+	position: static;
+}
+
+.left-sidebar.affix {
+    position: fixed;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+#my-footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow:hidden;
+}

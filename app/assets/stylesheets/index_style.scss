@@ -1,0 +1,17 @@
+.image { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+#main_header { 
+   font-size: 200px !important; 
+}
+
+#my-footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow:hidden;
+}
