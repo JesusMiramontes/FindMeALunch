@@ -92,7 +92,7 @@ body{
   transition: all 0.4s ease 0s;
 }
 
-#left-sidebar {
+.left-sidebar {
   min-height: 100%;
   height: 100%;
   position: fixed;
@@ -105,11 +105,11 @@ body{
   transition: all 0.4s ease 0s;
 }
 
-#left-sidebar.affix-top{
+.left-sidebar.affix-top{
 	position: static;
 }
 
-#left-sidebar.affix {
+.left-sidebar.affix {
     position: fixed;
 }
 
