@@ -1,35 +1,166 @@
+<head>
+  <script type="text/javascript">
+       function toggle_visibility(id, id2, id3, id4) {
+       var e = document.getElementById(id);
+       var e2 = document.getElementById(id2);
+       var e3 = document.getElementById(id3);
+       var e4 = document.getElementById(id4);
+
+        if(e2.style.display == 'block')
+          e2.style.display = 'none';
+
+        if(e3.style.display == 'block')
+          e3.style.display = 'none';
+
+        if(e4.style.display == 'block')
+          e4.style.display = 'none';
+
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+
+    function appendToSection(section, heading, description, price){
+      var start = '<div class="col-xs-8 col-lg-3 col-sm-6 col-md-4" >';
+      var final = String(start) + "<h2>" + String(heading) + '</h2>' + '<p style="height 200px; overflow-y: scroll">' + String(          description) + '</p>' + '<p><b> $' + String(price) + '</p></b>' +
+                  '<p><a class="btn btn-default" href="#" style="float:right" onclick="addRowSidebar()">Agregar »</a></p></div>';
+      document.getElementById(String(section)).innerHTML += String(final);
+      console.log(String(final) + ' CLASS: ' + String(section));
+    }
+
+    function addRowSidebar(){
+      var ul = document.getElementById('cart');
+      var li = document.createElement('li');
+      li.setAttribute("class","list-group-item"); 
+      ul.appendChild(li);
+      
+    }
+  </script>
+</head>
+
+<!--Fin de script -->
+
+
 <p id="notice"><%= notice %></p>
+<div class="container-fluid">
 
-<h1>Products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% if user_signed_in? %>
+   <% if current_user.is_admin? %>
+      <table class="table">
+        <thead>
+           <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th colspan="3"></th>
+           </tr>
+        </thead>
+        <tbody>
+           <% @products.each do |product| %>
+           <tr>
+              <td><%= product.title %></td>
+              <td><%= product.description %></td>
+              <td><%= product.price %></td>
+              <td><%= link_to 'Show', product %></td>
+              <td><%= link_to 'Edit', edit_product_path(product) %></td>
+              <td><%= link_to 'Kill', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+           </tr>
+           <% end-%>
+        </tbody>
+     </table>  
+      <%= link_to 'New Product', new_product_path %>
+      <% end %>
+  <% end %>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <% if user_signed_in? %>
-          <% if current_user.is_admin? %>
-            <td><%= link_to 'Show', product %></td>
-            <td><%= link_to 'Edit', edit_product_path(product) %></td>
-            <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
+    <div class = "row"></div>
+
+    <div class="container-fluid" id="left-sidebar" style="overflow: scroll;">
+   <!-- Sidebar Header -->
+   <div class="sidebar-header">
+      <h3>Categorias</h3>
+   </div>
+   <!-- Sidebar Links -->
+   <ul class="list-unstyled components">
+      <li class="list-group-item" >
+        <i class="fa fa-cutlery" aria-hidden="true"></i>
+        <a href="#" id ="platillo_fuerte" onclick="toggle_visibility('comida', 'bebida', 'ensalada', 'extra');"> Platillo Fuerte</a>
+      </li>
+      <li class="list-group-item">
+        <i class="fa fa-coffee" aria-hidden="true"></i>
+        <a href="#" id ="bebidas" onclick="toggle_visibility('bebida', 'comida', 'ensalada', 'extra');"> Bebidas</a>
+      </li>
+      <li class="list-group-item">
+        <i class="fa fa-leaf" aria-hidden="true"></i>
+        <a href="#" id ="ensaladas" onclick="toggle_visibility('ensalada', 'bebida', 'comida', 'extra');"> Ensaladas</a>
+      </li>
+      <li class="list-group-item">
+        <i class="fa fa-th-large" aria-hidden="true"></i>
+        <a href="#" id ="extras" onclick="toggle_visibility('extra', 'bebida', 'ensalada', 'comida');"> Extras</a>
+      </li>
+   </ul>
+   <hr>
+   <ul class="list-unstyled components" id="cart">
+      <li class="list-group-item">
+         Presupuesto
+         <p style="font-size: 6em; width: 100%; height: auto">$50</p>
+      </li>
+   </ul>
+</div>
+
+<style type="text/css">
+   #left-sidebar{
+      min-height: 100%;
+      height: 100%;
+      position: fixed;
+      margin-left: -250px;
+      left: 250px;
+      width: 250px;
+      height: 100%;
+
+      z-index: 1000;
+      transition: all 0.4s ease 0s;
+   }
+</style>
+
+    <div id="page-content-wrapper" style="padding-left: 250px">
+      <div class="col-xs-12 col-sm-8 col-md-12 col-lg-12 col-xl-12">
+        <section id ="comida" style="display: none;">
+        
+        </section>
+
+        <div class="row"></div>
+
+        <section id ="bebida" style="display: none;">
+        
+        </section>
+
+        <div class="row"></div>
+
+        <section id ="ensalada" style="display: none;">
+        
+        </section>
+
+        <div class="row"></div>
+
+        <section id ="extra" style="display: none;">
+        
+        </section>
+
+      <%if @products.count == @tags.count %>
+        <% for i in 0..@products.count-1 do %>
+              <script>appendToSection('<%= @tags[i].title %>', 
+                '<%=@products[i].title %>', 
+                '<%=@products[i].description%>', 
+                '<%=@products[i].price%>');
+              </script>
         <% end %>
-      </tr>
+      <%else%>
+        <p>There are products missing tags.</p>
     <% end %>
-  </tbody>
-</table>
+    </div>
+  </div>
 
-<br>
 
-<%= link_to 'New Product', new_product_path %>
+</div>

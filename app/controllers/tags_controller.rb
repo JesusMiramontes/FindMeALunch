@@ -5,6 +5,7 @@ class TagsController < ApplicationController
   # GET /tags.json
   def index
     @tags = Tag.all
+    @products = Product.all
   end
 
   # GET /tags/1

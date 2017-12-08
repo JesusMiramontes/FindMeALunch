@@ -7,19 +7,19 @@
    <ul class="list-unstyled components">
       <li class="list-group-item" >
          <i class="fa fa-cutlery" aria-hidden="true"></i>
-         Platillo Fuerte
+           <%= link_to "Platillo Fuerte", "#", id: "platillo_fuerte"  %>
       </li>
       <li class="list-group-item">
          <i class="fa fa-coffee" aria-hidden="true"></i>
-         <a href="#">Bebidas</a>
+         <%= link_to "Bebidas", "#", id: "bebidas"  %>
       </li>
       <li class="list-group-item">
          <i class="fa fa-leaf" aria-hidden="true"></i>
-         <a href="#">Ensaladas</a>
+         <%= link_to "Ensaladas", "#", id: "ensaladas"  %>
       </li>
       <li class="list-group-item">
          <i class="fa fa-th-large" aria-hidden="true"></i>
-         <a href="#">Extras</a>
+         <%= link_to "Extras", "#", id: "extras"  %>
       </li>
    </ul>
    <hr>
@@ -48,7 +48,7 @@
       left: 250px;
       width: 250px;
       height: 100%;
-      overflow-y: auto;
+
       z-index: 1000;
       transition: all 0.4s ease 0s;
    }

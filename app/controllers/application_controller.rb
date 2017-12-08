@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
     def show
     	render template: "application/#{params[:page]}"
   	end
+
+  	def index
+  		@products = Product.all
+  	end
 end
