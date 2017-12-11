@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :products
   devise_for :users
   #resources :application, only[:index]
-  #get "/application/:page" => "application#show"
+  get "/application/:page" => "application#show"
   get "/application/index" =>"application#index"
   get "/products/index" => "tags#index"
   #get "/application/index" => "product#index"

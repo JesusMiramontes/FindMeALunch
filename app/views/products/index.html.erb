@@ -1,4 +1,6 @@
 <head>
+   <title>Arma un Almuerzo - AlmuerzaTec</title>
+
   <script type="text/javascript">
        function toggle_visibility(id, id2, id3, id4) {
        var e = document.getElementById(id);
@@ -21,21 +23,52 @@
           e.style.display = 'block';
     }
 
-    function appendToSection(section, heading, description, price){
-      var start = '<div class="col-xs-8 col-lg-3 col-sm-6 col-md-4" >';
-      var final = String(start) + "<h2>" + String(heading) + '</h2>' + '<p style="height 200px; overflow-y: scroll">' + String(          description) + '</p>' + '<p><b> $' + String(price) + '</p></b>' +
-                  '<p><a class="btn btn-default" href="#" style="float:right" onclick="addRowSidebar()">Agregar »</a></p></div>';
-      document.getElementById(String(section)).innerHTML += String(final);
-      console.log(String(final) + ' CLASS: ' + String(section));
+    function addRowSidebar(data){
+        var ul = document.getElementById('cart');
+        var li = document.createElement('li');
+        var btnData = document.getElementById(data);
+        var btnDataPrice = btnData.getAttribute('data-price');
+        var btnDataName = btnData.getAttribute('data-name');
+        var pTotal = document.getElementById('total');
+        var total = pTotal.getAttribute('data-value');
+        var newTotal = Number(total) + Number(btnDataPrice);
+        var btnID = btnData.getAttribute('id'); 
+        var rowID = (String(btnID)).charAt(0);
+        var btnClose = '<a href="#" style="float:right" onclick="deleteRowFromCart('+String(rowID) +');"><i class="fa fa-times" aria-hidden="true"></i></a>';
+        pTotal.innerHTML= "$" + (String(newTotal));
+        pTotal.setAttribute("data-value", String(newTotal));
+        li.appendChild(document.createTextNode(String(btnDataName) + " $" + String(btnDataPrice) ));
+        li.innerHTML += String(btnClose);
+        li.setAttribute("class","list-group-item");
+        li.setAttribute("data-unit", String(btnDataPrice));
+        li.setAttribute("id", rowID);
+        ul.appendChild(li);    
     }
 
-    function addRowSidebar(){
-      var ul = document.getElementById('cart');
-      var li = document.createElement('li');
-      li.setAttribute("class","list-group-item"); 
-      ul.appendChild(li);
-      
+    function appendToSection(id, section, heading, description, price){
+      var start = '<div class="col-xs-8 col-lg-3 col-sm-6 col-md-4" >';
+      var passId = "'" + String(id) + "b'";
+      var final = String(start) + "<h2>" + String(heading) + '</h2>' + '<p style="height 200px; overflow-y: scroll">' + String(description) + '</p>' + '<p>' +
+        '<b> $' + String(price) + '</p></b>' + '<p><a class="btn btn-default" href="#" ' + 
+        'id="' + String(id) + 'b"'  + ' style="float:right" ' + 
+        'data-price="' + String(price)  + '" data-name="'+ String (heading) + '" onclick="addRowSidebar(' +
+         String(passId) + ');">Agregar »</a></p></div>';
+      document.getElementById(String(section)).innerHTML += String(final);
+      console.log(String(start) + ' CLASS: ' + String(section) + ' passId: ' + String(passId));
     }
+
+    function deleteRowFromCart(element){
+      var e = document.getElementById(element);
+      e.parentNode.removeChild(e);
+      var pTotal = document.getElementById('total');
+      var pTotalPrice = pTotal.getAttribute('data-value');
+      var price = e.getAttribute('data-unit');
+      var newTotal = Number(pTotalPrice) - Number(price);
+      pTotal.innerHTML= "$" + (String(newTotal));
+      pTotal.setAttribute("data-value", String(newTotal));
+      console.log(String(pTotal) + ' Precio de fila: ' + String(price) + ' Nuevo Total: ' + String(newTotal));
+    }
+
   </script>
 </head>
 
@@ -103,8 +136,8 @@
    <hr>
    <ul class="list-unstyled components" id="cart">
       <li class="list-group-item">
-         Presupuesto
-         <p style="font-size: 6em; width: 100%; height: auto">$50</p>
+         Total
+         <p id="total" data-value="0" style="font-size: 5em; width: 100%; height: auto">$0</p>
       </li>
    </ul>
 </div>
@@ -150,7 +183,8 @@
 
       <%if @products.count == @tags.count %>
         <% for i in 0..@products.count-1 do %>
-              <script>appendToSection('<%= @tags[i].title %>', 
+              <script>
+              appendToSection('<%=i%>','<%= @tags[i].title %>', 
                 '<%=@products[i].title %>', 
                 '<%=@products[i].description%>', 
                 '<%=@products[i].price%>');

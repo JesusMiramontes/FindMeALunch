@@ -8,6 +8,8 @@ class CombosController < ApplicationController
   # GET /combos.json
   def index
     @combos = Combo.all
+    @products = Product.all
+    
   end
 
   # GET /combos/1
