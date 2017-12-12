@@ -48,7 +48,7 @@
     function appendToSection(id, section, heading, description, price){
       var start = '<div class="col-xs-8 col-lg-3 col-sm-6 col-md-4" >';
       var passId = "'" + String(id) + "b'";
-      var final = String(start) + "<h2>" + String(heading) + '</h2>' + '<p style="height 200px; overflow-y: scroll">' + String(description) + '</p>' + '<p>' +
+      var final = String(start) + "<h2>" + String(heading) + '</h2>' + '<p style="height: 80px; overflow-y: scroll">' + String(description) + '</p>' + '<p>' +
         '<b> $' + String(price) + '</p></b>' + '<p><a class="btn btn-default" href="#" ' + 
         'id="' + String(id) + 'b"'  + ' style="float:right" ' + 
         'data-price="' + String(price)  + '" data-name="'+ String (heading) + '" onclick="addRowSidebar(' +

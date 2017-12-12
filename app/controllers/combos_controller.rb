@@ -2,14 +2,14 @@ class CombosController < ApplicationController
   include UserConcern
   before_action :set_combo, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :only_admins, except: [:show, :index]
+  #before_action :only_admins, except: [:show, :index]
 
   # GET /combos
   # GET /combos.json
   def index
     @combos = Combo.all
     @products = Product.all
-    
+
   end
 
   # GET /combos/1
@@ -70,7 +70,9 @@ class CombosController < ApplicationController
   # DELETE /combos/1
   # DELETE /combos/1.json
   def destroy
+    @combo.products.destroy_all.raise.to_yaml
     @combo.destroy
+
     respond_to do |format|
       format.html { redirect_to combos_url, notice: 'Combo was successfully destroyed.' }
       format.json { head :no_content }

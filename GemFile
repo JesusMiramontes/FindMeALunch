@@ -12,6 +12,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 
 gem 'sqlite3'
+gem 'seed_dump'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

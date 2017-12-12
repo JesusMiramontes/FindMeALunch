@@ -13,7 +13,7 @@ class PriceSuggestionsController < ApplicationController
   # GET /price_suggestions/1
   # GET /price_suggestions/1.json
   def show
-    render template: "application/#{params[:page]}"
+    #render template: "application/#{params[:page]}"
   end
 
   # GET /price_suggestions/new

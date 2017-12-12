@@ -1,10 +1,34 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Product.create(title: "Papas Fritas 70gr", description: "Sabritas, Rufles, Chips, Tostachos", price: 13.0)
+Product.create(title: 'Papas Fritas Económicas 50gr', description: 'Rancheritos, Churrumais, Runners', price: 8.0)
+Product.create(title: 'Refrescos 400ml', description: 'Coca-Cola & Pepsi clásicos de sabores', price: 10)
+Product.create(title: 'Sopa Maruchan', description: 'Sabores variados', price: 12)
+Product.create(title: 'Mollete', description: 'Varios guisos (chicharrón prensado, asado rojo, papas rojas, papas verdes,frijoles con queso, picadillo y más)', price: 20)
+Product.create(title: 'Hotdog', description: 'Preparado con verduras y aderezos', price: 10)
+Product.create(title: 'Galletas', description: 'Marcas varias: Principe, Canelitas, Barritas, Polvorones y más', price: 13)
+Product.create(title: 'Jugo de Sabor Económico', description: 'Marcas varias: Bida, Bell, Ami y más', price: 10)
+Product.create(title: 'Jugo de Sabor', description: 'Marcas varias: Júmex, Del Valle', price: 13)
+Product.create(title: 'Agua de Horchata', description: 'Agua de horchata natural', price: 12)
+Product.create(title: 'Jugo de Naranja', description: 'Jugo de naranja natural', price: 16)
+Product.create(title: 'Tortillón', description: 'Varios guisos (chicharrón prensado, asado rojo, papas rojas, papas verdes, frijoles con queso, picadillo y más)', price: 35)
+Product.create(title: 'Tortillón de Asada', description: 'Tortillón de carne asada', price: 50)
+Product.create(title: 'Yoghurt con frutas', description: 'Yogurt natural o de fresa con coctel de frutas', price: 29)
+Product.create(title: 'Aspirina', description: 'Medicamento para dolor de cabeza', price: 6)
+Product.create(title: 'Ensalada de Frutas', description: 'Coctel de frutas con sandía, manzana, jicama y granola', price: 35)
 
 
-Product.create(title: 'Keka', description: 'Keka', price: 10)
+Tag.create(title: "extra", product_id: 12)
+Tag.create(title: "extra", product_id: 13)
+Tag.create(title: "bebida", product_id: 14)
+Tag.create(title: "comida", product_id: 15)
+Tag.create(title: "comida", product_id: 16)
+Tag.create(title: "comida", product_id: 17)
+Tag.create(title: "comida", product_id: 18)
+Tag.create(title: "bebida", product_id: 19)
+Tag.create(title: "bebida", product_id: 20)
+Tag.create(title: "bebida", product_id: 21)
+Tag.create(title: "bebida", product_id: 22)
+Tag.create(title: "comida", product_id: 23)
+Tag.create(title: "comida", product_id: 24)
+Tag.create(title: "ensalada", product_id: 25)
+Tag.create(title: "extra", product_id: 26)
+Tag.create(title: "ensalada", product_id: 27)

@@ -8,6 +8,10 @@
         pTotal.innerHTML = '<h2><b> Total: $' + nTotal + '</b></h2>';
         console.log(String(nTotal));
       }
+
+      function recomandar(){
+        location.reload();
+      }
    </script>
 </head>
 
@@ -37,7 +41,7 @@
             <% if user_signed_in? %>
               <% if current_user.is_admin? %>
                 <td><%= link_to 'Edit', edit_combo_path(combo) %></td>
-                <td><%= link_to 'Destroy', combo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Desstroy', combo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
             <% end %>  
           </tr>
@@ -54,7 +58,7 @@
 <div class="jumbotron" >
       <h1>Recomendaciones</h1>
       <p>Haga clic en "Recomendar" para obtener una sugerencia de almuerzo. Las sugerencias se realizan tomando en cuenta precios, valor nutricional y disponibilidad.</p>
-      <p><a class="btn btn-default" href="#" style="float:right" onclick="recomendar();">Recomendar »</a></p>
+      <p><a class="btn btn-default" href="/combos" style="float:right" onclick="recomendar();">Recomendar »</a></p>
    </div>
   <section id="recomendacion" data-value="0">
 
