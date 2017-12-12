@@ -1,20 +1,8 @@
-<head>
-  <script type="text/javascript">
-      function recomendar(){
-         var s1 = document.getElementById('square1');
-         var s2 = document.getElementById('square2');
-         var s3 = document.getElementById('square3');
-         var limit = Number(<%@combos.count%>);
 
-
-         var rand = Math.floor((Math.random() * limit) + 1);
-         console.log(String(rand)); 
-      }
-   </script>
-</head>
 
 <p id="notice"><%= notice %></p>
 
+<div class="container">
 <p>
   <strong>Title:</strong>
   <%= @combo.title %>
@@ -53,3 +41,4 @@
 <% end %>
 
 <%= link_to 'Back', combos_path %>
+</div>

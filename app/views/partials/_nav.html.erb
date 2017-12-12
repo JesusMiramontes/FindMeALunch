@@ -5,15 +5,9 @@
             </div>
             <ul class="nav navbar-nav navbar-left">
                <li><a href="/products">Armar Almuerzo</a></li>
-               <li><a href="/application/recomendacion">Recomendados</a></li>
+               <li><a href="/combos">Recomendados</a></li>
                <% if user_signed_in? %>
                <li><a href="/application/sugerir">Sugerir</a></li>
-               <% end %>
-
-               <% if user_signed_in? %>
-                  <% if current_user.is_admin? %>
-                      <li><a href="/combos"> | Crear Almuerzo Recomendado</a></li>
-                  <% end %>
                <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
