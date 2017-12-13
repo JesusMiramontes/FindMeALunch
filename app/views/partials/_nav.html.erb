@@ -7,16 +7,24 @@
                <li><a href="/products">Armar Almuerzo</a></li>
                <li><a href="/combos">Recomendados</a></li>
                <% if user_signed_in? %>
-               <li><a href="/application/sugerir">Sugerir</a></li>
+               <li><a href="/tag_suggestions/new">Sugerir</a></li>
                <% end %>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+
+            
+            <ul class="nav navbar-nav navbar-right" style="float: right">
+            <% if user_signed_in? %>
                <li>
-                  <a href="/users/sign_in"><i class="fa fa-user-circle" aria-hidden="true"></i> Perfil</a>
+                  <a href="/users/edit"><i class="fa fa-user-circle" aria-hidden="true"></i> Perfil</a>
                </li>
-               <li>
-                  <a href="/users/sign_out"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
-               </li>
+            <%else%>
+            <li>
+               <a href="/users/sign_in">Log in</a>
+            </li>
+            <li>
+               <a href="/users/sign_up">Crear Cuenta</a>
+            </li>
+            <% end %>
             </ul>
    </div>
 </nav>

@@ -1,5 +1,8 @@
 class TagsController < ApplicationController
+  include UserConcern
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
+  before_action :only_admins
 
   # GET /tags
   # GET /tags.json

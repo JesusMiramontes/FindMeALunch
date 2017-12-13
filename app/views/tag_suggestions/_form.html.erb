@@ -16,9 +16,12 @@
     <%= f.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= f.label :product_id %>
-    <%= f.text_field :product_id %>
+    <div class="field">
+    <% @products.each do |p| %>
+      <div class="field">
+          <%= radio_button_tag('product_id', p.id)%> <%= p.title%>
+        </div> 
+    <% end %>
   </div>
 
   <div class="actions">

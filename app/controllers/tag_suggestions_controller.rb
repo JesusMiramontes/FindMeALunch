@@ -19,17 +19,21 @@ class TagSuggestionsController < ApplicationController
   # GET /tag_suggestions/new
   def new
     @tag_suggestion = TagSuggestion.new
+    @products = Product.all
   end
 
   # GET /tag_suggestions/1/edit
   def edit
+    @products = Product.all
   end
 
   # POST /tag_suggestions
   # POST /tag_suggestions.json
   def create
+    @products = Product.all
     @tag_suggestion = TagSuggestion.new(tag_suggestion_params)
     @tag_suggestion.user_id = current_user.id
+    @tag_suggestion.product_id = params[:product_id]
 
     respond_to do |format|
       if @tag_suggestion.save
@@ -45,6 +49,7 @@ class TagSuggestionsController < ApplicationController
   # PATCH/PUT /tag_suggestions/1
   # PATCH/PUT /tag_suggestions/1.json
   def update
+    @tag_suggestion.product_id = params[:product_id]
     respond_to do |format|
       if @tag_suggestion.update(tag_suggestion_params)
         format.html { redirect_to @tag_suggestion, notice: 'Tag suggestion was successfully updated.' }

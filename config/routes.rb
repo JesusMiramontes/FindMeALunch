@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
   #resources :application, only[:index]
   #get "/application/:page" => "application#show"
+  root :to => "application#index"
   get "/application/index" =>"application#index"
   get "/products/index" => "tags#index"
   #get "/application/index" => "product#index"

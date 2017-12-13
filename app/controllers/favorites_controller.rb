@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
   include UserConcern
   before_action :set_favorite, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+ # before_action :authenticate_user!, except: [:show, :index]
   #before_action :only_admins, only: [ :index]
 
   # GET /favorites
@@ -22,6 +22,7 @@ class FavoritesController < ApplicationController
   # GET /favorites/new
   def new
     @favorite = Favorite.new
+    @products = Product.all
   end
 
   # GET /favorites/1/edit
@@ -31,7 +32,11 @@ class FavoritesController < ApplicationController
   # POST /favorites
   # POST /favorites.json
   def create
+    #raise.params[:product_id].to_yaml
+    @products = Product.all
     @favorite = Favorite.new(favorite_params)
+    @favorite.product_id = params[:product_id]
+    @favorite.user_id=current_user.id
 
     respond_to do |format|
       if @favorite.save
@@ -76,6 +81,6 @@ class FavoritesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def favorite_params
-      params.require(:favorite).permit(:user_id, :product_id)
+      #params.require(:favorite).permit(:user_id, :product_id)
     end
 end
